@@ -1,0 +1,18 @@
+{
+  "localhost": {
+    "apiKey": "RGAPI-a473705a-76d6-44b6-b0d1-988e4a24219f",
+    "version": "v4"
+  },
+  "development": {
+    "apiKey": "RGAPI-1b8060a7-ba1e-4330-8dfb-d090c96439d8",
+    "version": "v4"
+  },
+  "test": {
+    "apiKey": "RGAPI-1b8060a7-ba1e-4330-8dfb-d090c96439d8",
+    "version": "v4"
+  },
+  "production": {
+    "apiKey": "RGAPI-1b8060a7-ba1e-4330-8dfb-d090c96439d8",
+    "version": "v4"
+  }
+}

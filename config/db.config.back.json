@@ -1,0 +1,62 @@
+{
+    "localhost": {
+        "databases" : {
+            "riotLolData" : {
+                "username": "root",
+                "password": "22160716Qw*",
+                "database": "riot-lol-data",
+                "host": "localhost",
+                "dialect": "mysql",
+                "define": {
+                  "freezeTableName": true,
+                  "timestamps": false
+                }
+            }
+        }
+    },
+    "development": {
+        "databases" : {
+            "riotLolData'" : {
+                "username": "root",
+                "password": "22160716Qw*",
+                "database": "riot-lol-data",
+                "host": "localhost",
+                "dialect": "mysql",
+                "define": {
+                  "freezeTableName": true,
+                  "timestamps": false
+                }
+            }
+        }
+    },
+    "test": {
+        "databases" : {
+            "riotLolData'" : {
+                "username": "root",
+                "password": "22160716Qw*",
+                "database": "riot-lol-data",
+                "host": "localhost",
+                "dialect": "mysql",
+                "define": {
+                  "freezeTableName": true,
+                  "timestamps": false
+                }
+            }
+        }
+    },
+    "production": {
+        "databases" : {
+            "riotLolData'" : {
+                "username": "root",
+                "password": "22160716Qw*",
+                "database": "riot-lol-data",
+                "host": "localhost",
+                "dialect": "mysql",
+                "define": {
+                  "freezeTableName": true,
+                  "timestamps": false
+                }
+            }
+        }
+    }
+}

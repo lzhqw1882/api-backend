@@ -1,0 +1,38 @@
+{
+  "localhost": {
+    "username": "root",
+    "password": "22160716Qw*",
+    "database": "riot-lol-data",
+    "host": "localhost",
+    "dialect": "mysql",
+    "define": {
+      "freezeTableName": true,
+      "timestamps": false
+    }
+  },
+  "development": {
+    "username": "root",
+    "password": "22160716Qw*",
+    "database": "riot-lol-data",
+    "host": "localhost",
+    "dialect": "mysql",
+    "define": {
+      "freezeTableName": true,
+      "timestamps": false
+    }
+  },
+  "test": {
+    "username": "root",
+    "password": "22160716Qw*",
+    "database": "riot-lol-data",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "22160716Qw*",
+    "database": "riot-lol-data",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}
