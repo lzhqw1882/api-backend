@@ -1,8 +1,9 @@
-const Models                = require('../../Models');
-const LibSummoners          = require('../../libraries/Lib.summoners');
-const LibResponse           = require('../../libraries/Lib.response');
-const LibRequest            = require('../../libraries/Lib.request');
-const CtrlBase              = require('./Ctrl.base');
+const Models        = require('../../Models');
+const LibSummoners  = require('../../libraries/Lib.summoners');
+const LibResponse   = require('../../libraries/Lib.response');
+const LibRequest    = require('../../libraries/Lib.request');
+const CtrlBase      = require('./Ctrl.base');
+const Moment        = require('moment');
 
 class CtrlSummoners extends CtrlBase
 {
@@ -18,24 +19,26 @@ class CtrlSummoners extends CtrlBase
 
     async get(req,res)
     {
-        let region          = LibRequest.getRegion(req);
+        let platformId          = LibRequest.getPlatformId(req);
         let summonerName    = req.params.id;
-        let apiResult       = await LibSummoners.getApi(region,summonerName);
+        let apiResult       = await LibSummoners.getApi(platformId,summonerName);
 
         if(apiResult.status==404)
         {
             LibResponse.responseError(res,apiResult.status,'no datas');
             return false;
         }
-
+        let moment  = Moment(apiResult.data.revisionDate);
+        //console.log(apiResult.data.revisionDate);
+        console.log(moment.format('YYYY-MM-DD HH:mm:ss'));
         LibResponse.responseData(res,apiResult.data);
     }
 
     async post(req,res)
     {
-        let region      = LibRequest.getRegion(req);
+        let platformId      = LibRequest.getPlatformId(req);
         let summonerName= LibRequest.post(req,'id');
-        let apiResult   = await LibSummoners.getApi(region,summonerName);
+        let apiResult   = await LibSummoners.getApi(platformId,summonerName);
         let apiDatas    = apiResult.data;
         let message     = '';
 
@@ -58,7 +61,7 @@ class CtrlSummoners extends CtrlBase
         }
         else
         {
-            await LibSummoners.store(summonerId,region,apiDatas);
+            await LibSummoners.store(summonerId,platformId,apiDatas);
 
             message = '등록됐습니다.';
         }

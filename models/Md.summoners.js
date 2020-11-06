@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
                 type: Sequelize.STRING(67),
                 allowNull : false
             },
-            region:{
+            platformId:{
                 type: Sequelize.STRING(2),
                 allowNull : false
             },

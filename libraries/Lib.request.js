@@ -5,9 +5,9 @@ class LibRequest
 
     }
 
-    getRegion(req)
+    getPlatformId(req)
     {
-        return req.headers.region;
+        return req.headers.platformid;
     }
 
     getSummonerName(req)

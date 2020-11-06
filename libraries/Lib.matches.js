@@ -8,11 +8,11 @@ class LibMatches
     constructor() {}
 
     // id : accountId
-    async getApi(region, gameId)
+    async getApi(platformId, gameId)
     {
         let datas;
         try {
-            datas    = await axios.get('https://'+region+'.api.riotgames.com/lol/match/'+libConfig.getRiot('version')+'/matches/'+gameId+'?api_key='+libConfig.getRiot('apiKey'));
+            datas    = await axios.get('https://'+platformId+'.api.riotgames.com/lol/match/'+libConfig.getRiot('version')+'/matches/'+gameId+'?api_key='+libConfig.getRiot('apiKey'));
         }
         catch(e) {
             datas   = e.response;

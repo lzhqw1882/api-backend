@@ -18,10 +18,10 @@ class CtrlMatchList extends CtrlBase
 
     async get(req,res)
     {
-        let region      = LibRequest.getRegion(req);
+        let platformId      = LibRequest.getPlatformId(req);
         let accountId   = req.params.id; // accountId
 
-        let apiResult   = await LibMatchList.getApi(region,accountId);
+        let apiResult   = await LibMatchList.getApi(platformId,accountId);
 
         if(apiResult.status==404)
         {
@@ -34,9 +34,9 @@ class CtrlMatchList extends CtrlBase
 
     async post(req,res)
     {
-        let region      = LibRequest.getRegion(req);
+        let platformId      = LibRequest.getPlatformId(req);
         let accountId   = LibRequest.post(req,'id');
-        let apiResult   = await LibMatchList.getApi(region,accountId);
+        let apiResult   = await LibMatchList.getApi(platformId,accountId);
         let apiDatas    = apiResult.data;
         if(apiResult.status==404)
         {

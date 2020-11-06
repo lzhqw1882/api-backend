@@ -7,11 +7,11 @@ class LibEntriesSummoner
 {
     constructor() {}
 
-    async getApi(region, summonerId)
+    async getApi(platformId, summonerId)
     {
         let datas;
         try {
-            datas    = await axios.get('https://'+region+'.api.riotgames.com/lol/league/'+libConfig.getRiot('version')+'/entries/by-summoner/'+summonerId+'?api_key='+libConfig.getRiot('apiKey'));
+            datas    = await axios.get('https://'+platformId+'.api.riotgames.com/lol/league/'+libConfig.getRiot('version')+'/entries/by-summoner/'+summonerId+'?api_key='+libConfig.getRiot('apiKey'));
         }
         catch(e) {
             datas   = e.response;
@@ -20,11 +20,11 @@ class LibEntriesSummoner
         return datas;
     }
 
-    async store(summonerId,region,datas)
+    async store(summonerId,platformId,datas)
     {
         let sets    = {
             summonerId:summonerId,
-            region:region,
+            platformId:platformId,
             datas:datas
         };
 

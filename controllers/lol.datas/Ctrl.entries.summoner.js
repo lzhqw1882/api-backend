@@ -18,9 +18,9 @@ class CtrlEntriesSummoner extends CtrlBase
 
     async get(req,res)
     {
-        let region      = LibRequest.getRegion(req);
+        let platformId      = LibRequest.getPlatformId(req);
         let summonerId  = req.params.id;
-        let apiResult   = await LibEntriesSummoner.getApi(region,summonerId);
+        let apiResult   = await LibEntriesSummoner.getApi(platformId,summonerId);
 
         if(apiResult.status==404)
         {
@@ -33,9 +33,9 @@ class CtrlEntriesSummoner extends CtrlBase
 
     async post(req,res)
     {
-        let region      = LibRequest.getRegion(req);
+        let platformId      = LibRequest.getPlatformId(req);
         let summonerId  = LibRequest.post(req,'id');
-        let apiResult   = await LibEntriesSummoner.getApi(region,summonerId);
+        let apiResult   = await LibEntriesSummoner.getApi(platformId,summonerId);
         let apiDatas    = apiResult.data;
         if(apiResult.status==404)
         {

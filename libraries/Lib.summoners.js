@@ -7,12 +7,12 @@ class LibSummoners
 {
     constructor() {}
 
-    async getApi(region, summonerName)
+    async getApi(platformId, summonerName)
     {
         let datas;
 
         try {
-            datas    = await axios.get('https://'+region+'.api.riotgames.com/lol/summoner/'+libConfig.getRiot('version')+'/summoners/by-name/'+urlencode(summonerName)+'?api_key='+libConfig.getRiot('apiKey'));
+            datas    = await axios.get('https://'+platformId+'.api.riotgames.com/lol/summoner/'+libConfig.getRiot('version')+'/summoners/by-name/'+urlencode(summonerName)+'?api_key='+libConfig.getRiot('apiKey'));
         }
         catch(e) {
             datas   = e.response;
@@ -21,11 +21,11 @@ class LibSummoners
         return datas;
     }
 
-    async store(summonerId,region,datas)
+    async store(summonerId,platformId,datas)
     {
         let sets    = {
             summonerId:summonerId,
-            region:region,
+            platformId:platformId,
             datas:datas
         };
 

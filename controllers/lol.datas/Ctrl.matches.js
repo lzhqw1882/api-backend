@@ -13,10 +13,10 @@ class CtrlMatches extends CtrlBase
 
     async get(req,res)
     {
-        let region  = LibRequest.getRegion(req);
+        let platformId  = LibRequest.getPlatformId(req);
         let gameId  = req.params.id; // gameId
 
-        let apiResult   = await LibMatches.getApi(region,gameId);
+        let apiResult   = await LibMatches.getApi(platformId,gameId);
 
         if(apiResult.status==404)
         {
@@ -29,9 +29,9 @@ class CtrlMatches extends CtrlBase
 
     async post(req,res)
     {
-        let region      = LibRequest.getRegion(req);
+        let platformId      = LibRequest.getPlatformId(req);
         let gameId      = LibRequest.post(req,'id');
-        let apiResult   = await LibMatches.getApi(region,gameId);
+        let apiResult   = await LibMatches.getApi(platformId,gameId);
         let apiDatas    = apiResult.data;
         let message     = '';
 

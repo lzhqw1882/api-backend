@@ -5,7 +5,7 @@ class CtrlBase
 
     }
 
-    getRegion(req)
+    getPlatformId(req)
     {
         console.log(req)
     }
