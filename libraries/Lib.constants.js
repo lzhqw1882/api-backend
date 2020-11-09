@@ -10,7 +10,19 @@ class LibConstants
     }
     async getRiotData(id)
     {
-        let apiDatas  = await axios.get('http://static.developer.riotgames.com/docs/lol/'+id+'.json', { validateStatus: false });
+        let apiDatas    = '';
+
+        switch(id)
+        {
+            case 'versions' :
+                apiDatas  = await axios.get('https://ddragon.leagueoflegends.com/api/versions.json', { validateStatus: false }); break;
+            case 'regions'  :
+                apiDatas  = await axios.get('https://ddragon.leagueoflegends.com/realms/na.json', { validateStatus: false }); break;
+            case 'languages'  :
+                apiDatas  = await axios.get('https://ddragon.leagueoflegends.com/cdn/languages.json', { validateStatus: false }); break;
+            default :
+                apiDatas  = await axios.get('http://static.developer.riotgames.com/docs/lol/'+id+'.json', { validateStatus: false }); break;
+        }
 
         return apiDatas;
     }

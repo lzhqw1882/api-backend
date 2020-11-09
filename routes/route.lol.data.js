@@ -1,6 +1,7 @@
 let express = require('express');
 let router = express.Router();
 let ctrlConstants       = require('../controllers/lol.datas/Ctrl.constants');
+let ctrlChampions       = require('../controllers/lol.datas/Ctrl.champions');
 let ctrlSummoners       = require('../controllers/lol.datas/Ctrl.summoners');
 let ctrlEntriesSummoner = require('../controllers/lol.datas/Ctrl.entries.summoner');
 let ctrlMatchList      = require('../controllers/lol.datas/Ctrl.match.list');
@@ -9,6 +10,7 @@ let ctrlMatchs          = require('../controllers/lol.datas/Ctrl.matches');
 
 // 라이엇 기본 데이타
 router.post('/constants/:id',ctrlConstants.post);
+router.post('/champions',ctrlChampions.post);
 
 // 소환사 정보
 router.get('/summoners/:id/', ctrlSummoners.get); // id = summonerName
