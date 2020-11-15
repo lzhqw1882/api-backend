@@ -1,9 +1,9 @@
 const models        = require('../../models');
 const libConstants  = require('../../libraries/Lib.constants');
-const libChampions  = require('../../libraries/Lib.champions');
+const libGameInfo   = require('../../libraries/Lib.game.info');
 const libResponse   = require('../../libraries/Lib.response');
 
-class CtrlChampions
+class CtrlGameInfo
 {
     constructor()
     {
@@ -25,33 +25,35 @@ class CtrlChampions
         let version         = versionRows.datas[0];
         let languageRows    = await libConstants.item('languages');
         let languages       = languageRows.datas;
-        //console.log(languageDatas);
+        let dataType        = req.url.split('/')[2];
+        libGameInfo.setDataType(dataType);
 
         for(let language of languages)
         {
-            let riotDatas   = await libChampions.getRiotData(version,language);
+            let riotDatas   = await libGameInfo.getRiotData(version,language);
 
             if(riotDatas.status==200)
             {
                 let riotiData = riotDatas.data;
-                let hasItem   = await libChampions.hasItem(version,language);
+                let hasItem   = await libGameInfo.hasItem(version,language);
 
                 if(hasItem)
                 {
                     let sets    = {datas: riotiData};
-                    let where   = {where:{version:version,language:language}};
+                    let where   = {where:{dataType:dataType,version:version,language:language}};
 
-                    await models.champions.update(sets,where);
+                    await models.gameInfo.update(sets,where);
                 }
                 else
                 {
                     let sets    = {
+                        dataType:dataType,
                         version:version,
                         language:language,
                         datas:riotiData
                     }
 
-                    await models.champions.create(sets);
+                    await models.gameInfo.create(sets);
                 }
             }
         }
@@ -70,4 +72,4 @@ class CtrlChampions
     }
 }
 
-module.exports = new CtrlChampions();
+module.exports = new CtrlGameInfo();

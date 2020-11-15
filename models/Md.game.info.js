@@ -2,13 +2,17 @@ const { Sequelize, DataTypes, Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define(
-        "champions", // 테이블 이름
+        "gameInfo", // 테이블 이름
         {
             seq:{
                 type : Sequelize.INTEGER,
                 autoIncrement: true,
                 allowNull : false,
                 primaryKey: true
+            },
+            dataType:{
+                type : Sequelize.STRING(16),
+                allowNull : false,
             },
             version:{
                 type : Sequelize.STRING(16),

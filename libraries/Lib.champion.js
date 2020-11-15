@@ -8,9 +8,10 @@ class LibConstants
     {
 
     }
-    async getRiotData(version,language)
+    async getRiotData(version,language,id)
     {
-        let apiDatas  = await axios.get(`http://ddragon.leagueoflegends.com/cdn/${version}/data/${language}/champion.json`, { validateStatus: false });
+        console.log(`http://ddragon.leagueoflegends.com/cdn/${version}/data/${language}/champion/${id}.json`);
+        let apiDatas  = await axios.get(`http://ddragon.leagueoflegends.com/cdn/${version}/data/${language}/champion/${id}.json`, { validateStatus: false });
 
         return apiDatas;
     }
@@ -19,7 +20,7 @@ class LibConstants
     {
         let dbData = {};
 
-        await models.champions.findOne({
+        await models.gameInfo.findOne({
             where: {version:version,language:language}
         }).then((row)=>{
             if(row)
